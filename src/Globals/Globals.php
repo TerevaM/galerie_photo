@@ -28,7 +28,7 @@ class Globals{
         if(null !== $key) {
             return $this->SESSION[$key] ?? null;
         }
-        return $this->SESSION;
+        return $this->$_SESSION;
     }
     
 }

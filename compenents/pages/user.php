@@ -10,6 +10,7 @@ navbar('../../', '');
 $globals = new Globals;
 $post = $globals->getPOST();
 $get = $globals->getGET();
+$session = $globals->getSESSION();
 ?>
 <div class="container-fluid row">
   <!-- Inscription  -->
@@ -38,11 +39,11 @@ $get = $globals->getGET();
                 break;
               else:
                 print_r( 'salutation');
-                $_SESSION['prenom'] = $post['prenom'];
-                $_SESSION['nom'] = $post['nom'];
-                $_SESSION['email'] = $post['email'];
-                $_SESSION['password'] = $post['password'];
-                $_SESSION['rank'] = 'visiteur';
+                $session['prenom'] = $post['prenom'];
+                $session['nom'] = $post['nom'];
+                $session['email'] = $post['email'];
+                $session['password'] = $post['password'];
+                $session['rank'] = 'visiteur';
                 header('Location: ../../data/dbb/formuser.php');
               endif;
           endforeach;

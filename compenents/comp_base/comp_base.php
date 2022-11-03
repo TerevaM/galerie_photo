@@ -35,6 +35,7 @@ function navbar($link_index, $link_page) {
     session_start();
     $globals = new Globals;
     $get = $globals->getGET();
+    $session = $globals->getSESSION();
 if(!empty($get) && isset($get['disconnect']) && $get['disconnect'] == 1) {
     session_destroy();
       header('Location: ../../index.php');
@@ -57,7 +58,7 @@ if(!empty($get) && isset($get['disconnect']) && $get['disconnect'] == 1) {
                 <li class="nav-item">
                 <a class="nav-link d-flex justify-content-center" href="<?= $link_page ?>contact.php">Contact</a>
                 </li>
-                <?php if(empty($_SESSION)) { ?>
+                <?php if(empty($session)) { ?>
 
                 <li class="nav-item">
                 <a class="nav-link d-flex justify-content-center" href="<?= $link_page ?>user.php">Connexion / Inscription</a></li>
@@ -65,13 +66,13 @@ if(!empty($get) && isset($get['disconnect']) && $get['disconnect'] == 1) {
                 else {
                 ?>
                 <?php
-                if($_SESSION['rank'] == 'admin') { ?>
+                if($session['rank'] == 'admin') { ?>
                 <li class="nav-item">
                     <a class="nav-link d-flex justify-content-center" href="<?= $link_page ?>admin.php">Page Admin</a>
                 </li>
                 <?php } ?>
                         <a class="position-absolute end-0" href="<?= $link_page ?>compte.php">
-                <img src="https://avatars.dicebear.com/api/initials/<?=substr($_SESSION['prenom'], 0, 1). substr($_SESSION['nom'], 0, 1) ?>.svg"id="logo_account" alt="">
+                <img src="https://avatars.dicebear.com/api/initials/<?=substr($session['prenom'], 0, 1). substr($session['nom'], 0, 1) ?>.svg"id="logo_account" alt="">
                 </a>
                 
                <?php } ?>

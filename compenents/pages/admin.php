@@ -1,12 +1,16 @@
 
 <?php
+use App\Globals\Globals;
 require_once "../comp_base/comp_base.php";
 require_once "../../vendor/autoload.php";
 start_page('Page admin','../../utils/css/');
 navbar('../../', '');
 
+$globals = new Globals;
+$session = $globals->getSESSION();
+
 //verif si l'utilisateur est bien admin
-if($_SESSION['rank'] !== 'admin'){
+if($session['rank'] !== 'admin'){
     header('Location: ../../index.php');
 }
 ?>
